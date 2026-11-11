@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التقديم للجامعة | التقديم الإلكتروني</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#d8ad58;--light:#f2d28b;--bg:#0f0f0f;--card:#1b1b1b;--border:#333}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:#fff;min-height:100vh}
+header{background:#111;border-bottom:1px solid #2a2a2a;position:sticky;top:0;z-index:10}
+.nav{width:min(1100px,92%);margin:auto;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font-size:24px;font-weight:900;color:var(--light)}
+.logo span{color:var(--gold);font-size:13px;display:block;letter-spacing:1px}
+.badge{background:linear-gradient(135deg,#f2d28b,#bd8832);color:#17120a;padding:8px 14px;border-radius:20px;font-weight:800;font-size:13px}
+.hero{width:min(1100px,92%);margin:auto;padding:38px 0 20px;text-align:center}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.4}
+.hero h1 span{color:var(--gold)}
+.hero p{color:#aaa;margin-top:10px;line-height:1.9}
+.card{width:min(760px,92%);margin:20px auto 40px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;box-shadow:0 10px 40px #0008}
+.card h2{font-size:20px;margin-bottom:5px;color:var(--light)}
+.card>p{color:#999;font-size:13px;margin-bottom:20px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#ddd}
+input,select{width:100%;background:#121212;border:1px solid #3a3a3a;color:#fff;border-radius:10px;padding:13px 12px;outline:none;font-family:inherit;font-size:14px}
+input:focus,select:focus{border-color:var(--gold)}
+input::placeholder{color:#777}
+.radio-box{display:flex;gap:10px}
+.radio{flex:1;background:#121212;border:1px solid #3a3a3a;border-radius:10px;padding:12px;text-align:center;cursor:pointer;font-weight:800;font-size:14px}
+.radio input{display:none}
+.radio.active{background:linear-gradient(135deg,#f2d28b,#bd8832);color:#17120a;border-color:var(--gold)}
+.hint{font-size:11px;color:#888;margin-top:4px}
+.pay-box{background:#241c0d;border:1px solid #70552d;border-radius:12px;padding:14px}
+.pay-box label{color:var(--light)}
+.pay-box input{border-color:#70552d;background:#151008}
+.submit{grid-column:1/-1;background:linear-gradient(135deg,#f2d28b,#bd8832);color:#17120a;border:0;padding:15px;border-radius:12px;font-weight:900;font-size:17px;cursor:pointer;margin-top:6px}
+.submit:hover{opacity:.92}
+.error{grid-column:1/-1;display:none;background:#421f1f;color:#ffaaaa;border:1px solid #7c3434;padding:12px;border-radius:10px;font-size:14px;text-align:center;line-height:1.7;font-weight:700}
+footer{text-align:center;color:#777;padding:0 0 30px;font-size:12px}
+.modal{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;padding:15px;z-index:50}
+.modal.show{display:flex}
+.box{width:min(500px,100%);background:#1b1b1b;border:1px solid #70552d;border-radius:18px;padding:24px;max-height:90vh;overflow:auto}
+.box h3{color:var(--light);margin-bottom:14px}
+.box table{width:100%;border-collapse:collapse;font-size:14px}
+.box td{padding:9px 6px;border-bottom:1px solid #2d2d2d}
+.box td:first-child{color:#aaa;width:40%}
+.btns{display:flex;gap:10px;margin-top:18px}
+.btns button{flex:1;padding:12px;border-radius:10px;border:0;font-weight:800;cursor:pointer;font-family:inherit}
+.ok{background:linear-gradient(135deg,#f2d28b,#bd8832);color:#17120a}
+.no{background:#2a2a2a;color:#fff}
+.success{display:none;text-align:center;padding:20px}
+.success .big{font-size:50px}
+.success h3{color:var(--light);margin:10px 0}
+.success p{color:#aaa;line-height:1.8;font-size:14px}
+@media(max-width:600px){.form{grid-template-columns:1fr}.card{padding:18px}.nav{flex-wrap:wrap;padding:10px 0}}
+</style>
+</head>
+<body>
+
+<header><div class="nav">
+<div class="logo">التقديم للجامعة<span>UNIVERSITY ADMISSION - SUDAN</span></div>
+<div class="badge">التقديم الإلكتروني 2026</div>
+</div></header>
+
+<div class="hero">
+<h1>قدم لجامعتك <span>من مكانك</span></h1>
+<p>املأ الاستمارة التالية بدقة، تأكد من الاسم والرقم الوطني ورقم الهاتف قبل الإرسال.</p>
+</div>
+
+<div class="card">
+<h2>📝 استمارة التقديم</h2>
+<p>جميع الحقول مطلوبة *</p>
+<form id="form" class="form" novalidate>
+
+<div class="full">
+<label>الاسم رباعي *</label>
+<input id="name" placeholder="مثال: محمد أحمد علي حسن" required>
+<div class="hint">اكتب الاسم كما في الشهادة السودانية / الرقم الوطني</div>
+</div>
+
+<div>
+<label>الرقم الوطني *</label>
+<input id="nationalId" inputmode="numeric" placeholder="مثال: 12345678901" required>
+</div>
+
+<div>
+<label>النسبة المئوية *</label>
+<input id="percentage" type="number" min="50" max="100" step="0.01" placeholder="مثال: 82.5" required>
+</div>
+
+<div class="full">
+<label>نوع الدراسة *</label>
+<div class="radio-box">
+<label class="radio active"><input type="radio" name="degree" value="بكالوريوس" checked> 🎓 بكالوريوس</label>
+<label class="radio"><input type="radio" name="degree" value="دبلوم"> 📜 دبلوم</label>
+</div>
+</div>
+
+<div>
+<label>عام الشهادة *</label>
+<select id="year" required>
+<option value="">اختر العام</option>
+</select>
+</div>
+
+<div>
+<label>رقم هاتف نشط *</label>
+<input id="phone" type="tel" placeholder="09xxxxxxxx" required>
+<div class="hint">سيتم التواصل معك عبر هذا الرقم وواتساب</div>
+</div>
+
+<div class="full">
+<label>اختيار التخصص *</label>
+<select id="major" required>
+<option value="">اختر التخصص</option>
+<optgroup label="🩺 التخصصات الطبية">
+<option>طب بشري</option>
+<option>طب وجراحة الأسنان</option>
+<option>صيدلة</option>
+<option>المختبرات الطبية</option>
+<option>التمريض</option>
+<option>العلاج الطبيعي</option>
+<option>الأشعة التشخيصية</option>
+<option>التخدير</option>
+<option>البصريات</option>
+<option>الصحة العامة</option>
+<option>التغذية العلاجية</option>
+<option>علم النفس الصحي</option>
+<option>القبالة</option>
+</optgroup>
+<optgroup label="💻 التخصصات الحاسوبية">
+<option>علوم الحاسوب</option>
+<option>هندسة البرمجيات</option>
+<option>تقنية المعلومات</option>
+<option>نظم المعلومات</option>
+<option>الذكاء الاصطناعي</option>
+<option>الأمن السيبراني</option>
+<option>الشبكات</option>
+<option>علوم البيانات</option>
+<option>هندسة الحاسوب</option>
+<option>تطوير الويب والتطبيقات</option>
+<option>الوسائط المتعددة</option>
+</optgroup>
+</select>
+</div>
+
+<div class="full">
+<label>اختيار الجامعة *</label>
+<select id="university" required>
+<option value="">اختر الجامعة</option>
+<option>1 - السودان المفتوحة</option>
+<option>2 - جامعة المشرق</option>
+<option>3 - جامعة أفريقيا العلمية</option>
+<option>4 - جامعة النيلين</option>
+<option>5 - جامعة الرباط</option>
+<option>6 - جامعة بخت الرضا</option>
+<option>7 - جامعة بحري</option>
+<option>8 - الجامعة الوطنية</option>
+<option>9 - جامعة التقانة</option>
+<option>10 - جامعة الجزيرة</option>
+<option>11 - جامعة بورتسودان</option>
+<option>12 - الكليات الخاصة</option>
+<option>13 - جامعة الرازي</option>
+<option>14 - جامعة ابن سينا</option>
+</select>
+</div>
+
+<div class="full pay-box">
+<label>🔐 رمز التقديم بعد الدفع *</label>
+<input id="payCode" inputmode="numeric" placeholder="ادخل رمز التقديم المرسل لك بعد الدفع" required>
+<div class="hint">⚠️ يتم الحصول على الرمز بعد سداد رسوم التقديم. بدون رمز صحيح لا يمكن إكمال التقديم.</div>
+</div>
+
+<div id="error" class="error"></div>
+<button type="submit" class="submit">إرسال طلب التقديم ←</button>
+</form>
+
+<div id="success" class="success">
+<div class="big">✅</div>
+<h3>تم استلام طلبك بنجاح!</h3>
+<p>شكراً لك، تم تسجيل بياناتك. سيتم التواصل معك قريباً عبر رقم الهاتف المسجل.<br>رقم الطلب: <b id="orderNo" style="color:#f2d28b"></b></p>
+<button class="submit" onclick="location.reload()">تقديم طلب جديد</button>
+</div>
+</div>
+
+<footer>© 2026 التقديم للجامعة - جميع الحقوق محفوظة</footer>
+
+<div class="modal" id="modal">
+<div class="box">
+<h3>راجع بياناتك قبل الإرسال</h3>
+<table id="preview"></table>
+<div class="btns">
+<button class="no" onclick="closeModal()">تعديل</button>
+<button class="ok" onclick="confirmSend()">تأكيد وإرسال</button>
+</div>
+</div>
+</div>
+
+<script>
+const CORRECT_CODE = "232318";
+// تعبئة السنوات من 2026 الى 1980
+const yearSel = document.getElementById('year');
+for(let y=2026; y>=1980; y--){
+  let o=document.createElement('option'); o.value=y; o.textContent=y; yearSel.appendChild(o);
+}
+
+// تفعيل اختيار بكالوريوس / دبلوم
+document.querySelectorAll('.radio').forEach(el=>{
+  el.addEventListener('click',()=>{
+    document.querySelectorAll('.radio').forEach(r=>r.classList.remove('active'));
+    el.classList.add('active');
+    el.querySelector('input').checked=true;
+  });
+});
+
+let data={};
+const form=document.getElementById('form');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim();
+  const nid=document.getElementById('nationalId').value.trim();
+  const perc=document.getElementById('percentage').value.trim();
+  const degree=document.querySelector('input[name="degree"]:checked').value;
+  const year=document.getElementById('year').value;
+  const phone=document.getElementById('phone').value.trim();
+  const major=document.getElementById('major').value;
+  const uni=document.getElementById('university').value;
+  const payCode=document.getElementById('payCode').value.trim();
+  const err=document.getElementById('error');
+
+  function showErr(msg){err.style.display='block';err.textContent=msg;err.scrollIntoView({behavior:'smooth',block:'center'});return;}
+
+  if(name.split(/\s+/).length < 4) return showErr('⚠️ اكتب الاسم رباعي كامل - 4 أسماء');
+  if(!/^\d{10,12}$/.test(nid)) return showErr('⚠️ الرقم الوطني لازم يكون 10 إلى 12 رقم');
+  if(!perc || perc<50 || perc>100) return showErr('⚠️ النسبة لازم تكون بين 50 و 100');
+  if(!year) return showErr('⚠️ اختر عام الشهادة');
+  if(!/^0?9\d{8}$/.test(phone.replace(/\s/g,''))) return showErr('⚠️ اكتب رقم هاتف سوداني صحيح يبدأ بـ 09');
+  if(!major) return showErr('⚠️ اختر التخصص');
+  if(!uni) return showErr('⚠️ اختر الجامعة');
+  if(!payCode) return showErr('⚠️ ادخل رمز التقديم بعد الدفع');
+  if(payCode !== CORRECT_CODE) return showErr('❌ خطأ لا يمكن التقديم\nيرجى سداد الرسوم أولاً للحصول على رمز التقديم الصحيح');
+
+  err.style.display='none';
+  data={name,nid,perc,degree,year,phone,major,uni,payCode};
+  document.getElementById('preview').innerHTML=`
+  <tr><td>الاسم رباعي</td><td><b>${name}</b></td></tr>
+  <tr><td>الرقم الوطني</td><td><b>${nid}</b></td></tr>
+  <tr><td>النسبة</td><td><b>${perc}%</b></td></tr>
+  <tr><td>نوع الدراسة</td><td><b>${degree}</b></td></tr>
+  <tr><td>عام الشهادة</td><td><b>${year}</b></td></tr>
+  <tr><td>رقم الهاتف</td><td><b dir="ltr">${phone}</b></td></tr>
+  <tr><td>التخصص</td><td><b>${major}</b></td></tr>
+  <tr><td>الجامعة</td><td><b>${uni}</b></td></tr>
+  <tr><td>رمز التقديم</td><td><b style="color:#7CFC9A">✓ تم التحقق</b></td></tr>`;
+  document.getElementById('modal').classList.add('show');
+});
+
+function closeModal(){document.getElementById('modal').classList.remove('show');}
+function confirmSend(){
+  closeModal();
+  form.style.display='none';
+  document.getElementById('success').style.display='block';
+  document.getElementById('orderNo').textContent='UNI-'+Math.floor(100000+Math.random()*900000);
+  window.scrollTo({top:0,behavior:'smooth'});
+  console.log('طلب جديد:',data);
+}
+</script>
+</body>
+</html>
